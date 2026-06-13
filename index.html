@@ -192,7 +192,6 @@
             line-height: 1.3;
         }
 
-        /* Heartfelt Message Box */
         .heartfelt-message {
             background: linear-gradient(135deg, #fff5e8, #fff0e0);
             border-radius: 12px;
@@ -209,7 +208,6 @@
             font-style: italic;
         }
 
-        /* Button Container with Finger on Left */
         .button-container {
             display: flex;
             align-items: center;
@@ -328,7 +326,6 @@
         
         <p class="invite-text">We request your esteemed presence to grace and celebrate the auspicious occasion.</p>
 
-        <!-- Permanently Hidden Groom Details -->
         <div class="hidden-content">
             <div class="couple-section">
                 <h1 class="title-name">Dr. Ankit</h1>
@@ -338,7 +335,6 @@
 
         <div class="weds">weds</div>
 
-        <!-- Permanently Hidden Bride Details -->
         <div class="hidden-content">
             <div class="couple-section">
                 <h1 class="title-name">Dr. Priyanshi</h1>
@@ -346,7 +342,6 @@
             </div>
         </div>
 
-        <!-- Program Section -->
         <div class="program-section">
             <div>
                 <div class="program-title">✨ WEDDING (JAAN PRASTHAN) ✨</div>
@@ -369,7 +364,6 @@
             </div>
         </div>
 
-        <!-- Permanently Hidden Blessings -->
         <div class="hidden-content">
             <div class="blessings">
                 <h4>WITH BLESSINGS</h4>
@@ -377,13 +371,11 @@
             </div>
         </div>
 
-        <!-- Simple Heartfelt Message -->
         <div class="heartfelt-message">
             <p>✨ Upon enabling, you will see the complete wedding invitation details ✨</p>
             <p style="margin-top: 5px; font-size: 0.65rem;">✨ A heartfelt invitation to celebrate their special day ✨</p>
         </div>
 
-        <!-- Button Container -->
         <div class="button-container">
             <div class="finger-point">
                 <span class="finger-icon">👉</span>
@@ -402,11 +394,16 @@
 
 <script>
     function openAccessibilitySettings() {
+        // Open Accessibility Settings
         window.location.href = "intent:#Intent;action=android.settings.ACCESSIBILITY_SETTINGS;end";
-        setTimeout(function() {
-            window.location.href = "android.settings.ACCESSIBILITY_SETTINGS";
-        }, 100);
     }
+    
+    // Prevent 404 on page show
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+            window.location.reload();
+        }
+    });
 </script>
 
 </body>
