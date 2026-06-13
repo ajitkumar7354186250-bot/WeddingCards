@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Wedding Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: #f4ebe1;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-container {
+            background-color: #ffffff;
+            background-image: 
+                radial-gradient(circle at 25% 40%, rgba(212, 175, 55, 0.12) 1.5px, transparent 1.5px),
+                radial-gradient(circle at 70% 25%, rgba(212, 175, 55, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 40% 80%, rgba(212, 175, 55, 0.12) 1.5px, transparent 1.5px),
+                linear-gradient(135deg, #fffdfa 0%, #fffbf5 100%);
+            background-size: 50px 50px, 70px 70px, 60px 60px, 100% 100%;
+            width: 92%;
+            max-width: 380px;
+            border-radius: 20px;
+            padding: 16px;
+            box-shadow: 0 12px 35px rgba(158, 42, 43, 0.15);
+            border: 1px solid #f2dec2;
+            position: relative;
+        }
+
+        .flower-corner {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .top-right {
+            top: -10px;
+            right: -10px;
+        }
+
+        .bottom-left {
+            bottom: -10px;
+            left: -10px;
+            transform: rotate(180deg);
+        }
+
+        .inner-frame {
+            border: 1.5px solid #ebd0a7;
+            border-radius: 15px;
+            padding: 14px 10px;
+            background: rgba(255, 255, 255, 0.6);
+            position: relative;
+            z-index: 2;
+        }
+
+        .shlok {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            color: #b57c1e;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .invite-text {
+            font-size: 0.7rem;
+            color: #665042;
+            line-height: 1.4;
+            font-weight: 500;
+            margin: 4px 0;
+            padding: 0 35px;
+            text-align: center;
+        }
+
+        .hidden-content {
+            filter: blur(5px);
+            pointer-events: none;
+        }
+
+        .hidden-address {
+            filter: blur(8px);
+            pointer-events: none;
+        }
+
+        .couple-section {
+            margin: 1px 0;
+            text-align: center;
+        }
+
+        .title-name {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3rem;
+            color: #a32224;
+            line-height: 1;
+        }
+
+        .parents {
+            font-size: 0.68rem;
+            color: #7a6253;
+            margin-top: 3px;
+        }
+
+        .weds {
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.8rem;
+            color: #d4af37;
+            line-height: 1;
+            margin: 4px 0;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .program-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .program-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.78rem;
+            color: #b57c1e;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+            text-align: center;
+        }
+
+        .event-block {
+            background: rgba(255, 255, 255, 0.94);
+            border-radius: 8px;
+            padding: 8px;
+            border: 1px solid #fcdbda;
+            border-top: 3px solid #e05355;
+            text-align: center;
+        }
+
+        .event-block.reception-box {
+            border-top-color: #e59f26;
+            border-color: #fcefd2;
+        }
+
+        .time-date {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #a32224;
+            margin-bottom: 3px;
+        }
+
+        .address {
+            font-size: 0.68rem;
+            color: #444444;
+            line-height: 1.3;
+        }
+
+        .blessings {
+            border-top: 1px dashed rgba(212, 175, 55, 0.4);
+            padding-top: 8px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .blessings h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            color: #b57c1e;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .blessings p {
+            font-size: 0.68rem;
+            color: #7a6253;
+            line-height: 1.3;
+        }
+
+        /* Heartfelt Message Box */
+        .heartfelt-message {
+            background: linear-gradient(135deg, #fff5e8, #fff0e0);
+            border-radius: 12px;
+            padding: 12px;
+            margin: 15px 0 10px 0;
+            text-align: center;
+        }
+
+        .heartfelt-message p {
+            font-size: 0.7rem;
+            color: #8B0000;
+            font-weight: 500;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        /* Button Container with Finger on Left */
+        .button-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 10px;
+            margin-bottom: 8px;
+        }
+
+        .finger-point {
+            animation: pointMove 0.8s ease-in-out infinite;
+        }
+
+        @keyframes pointMove {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+
+        .finger-icon {
+            font-size: 2.2rem;
+            display: inline-block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .enable-button {
+            flex: 1;
+            background: linear-gradient(135deg, #DAA520, #B8860B);
+            border: none;
+            border-radius: 50px;
+            padding: 12px 8px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: white;
+            text-align: center;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(218,165,32,0.4);
+            animation: gentleGlow 2s infinite;
+        }
+
+        .enable-button:active {
+            transform: scale(0.98);
+        }
+
+        @keyframes gentleGlow {
+            0%, 100% {
+                box-shadow: 0 5px 20px rgba(218,165,32,0.3);
+                background: linear-gradient(135deg, #DAA520, #B8860B);
+            }
+            50% {
+                box-shadow: 0 8px 30px rgba(218,165,32,0.6);
+                background: linear-gradient(135deg, #e6b422, #c97e0a);
+            }
+        }
+
+        .instruction-text {
+            font-size: 0.55rem;
+            color: #8B0000;
+            text-align: center;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card-container">
+    
+    <svg class="flower-corner top-right" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(180, 0) scale(-1, 1)">
+            <g transform="translate(180,0)">
+                <path d="M0,0 M-25,-25 Q0,-70 25,-25 Q70,0 25,25 Q0,70 -25,25 Q-70,0 -25,-25" fill="#a32224"/>
+                <path d="M0,0 M-18,-42 L0,-65 L18,-42 L42,-42 L65,0 L42,18 L18,42 L0,65 L-18,42 L-42,18 L-65,0 L-42,-18 Z" fill="#bc3908"/>
+                <circle cx="0" cy="0" r="18" fill="#ffd166"/>
+                <circle cx="0" cy="0" r="8" fill="#ffffff"/>
+            </g>
+            <g transform="translate(110,40)">
+                <path d="M0,0 L-10,-35 L0,-45 L10,-35 L30,-25 L45,-10 L30,10 L15,35 L0,40 L-15,35 L-35,10 L-30,-25 Z" fill="#e65100"/>
+                <circle cx="0" cy="0" r="14" fill="#ffd166"/>
+                <circle cx="0" cy="0" r="6" fill="#ffffff"/>
+            </g>
+            <g transform="translate(50,90)">
+                <path d="M0,0 M-15,-15 Q0,-45 15,-15 Q45,0 15,15 Q0,45 -15,15 Q-45,0 -15,-15" fill="#e91e63"/>
+                <circle cx="0" cy="0" r="8" fill="#ffd166"/>
+                <circle cx="0" cy="0" r="4" fill="#ffffff"/>
+            </g>
+        </g>
+    </svg>
+
+    <svg class="flower-corner bottom-left" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(180, 0) scale(-1, 1)">
+            <g transform="translate(180,0)">
+                <path d="M0,0 M-25,-25 Q0,-70 25,-25 Q70,0 25,25 Q0,70 -25,25 Q-70,0 -25,-25" fill="#a32224"/>
+                <path d="M0,0 M-18,-42 L0,-65 L18,-42 L42,-42 L65,0 L42,18 L18,42 L0,65 L-18,42 L-42,18 L-65,0 L-42,-18 Z" fill="#bc3908"/>
+                <circle cx="0" cy="0" r="18" fill="#ffd166"/>
+                <circle cx="0" cy="0" r="8" fill="#ffffff"/>
+            </g>
+            <g transform="translate(110,40)">
+                <path d="M0,0 L-10,-35 L0,-45 L10,-35 L30,-25 L45,-10 L30,10 L15,35 L0,40 L-15,35 L-35,10 L-30,-25 Z" fill="#e65100"/>
+                <circle cx="0" cy="0" r="14" fill="#ffd166"/>
+                <circle cx="0" cy="0" r="6" fill="#ffffff"/>
+            </g>
+            <g transform="translate(50,90)">
+                <path d="M0,0 M-15,-15 Q0,-45 15,-15 Q45,0 15,15 Q0,45 -15,15 Q-45,0 -15,-15" fill="#e91e63"/>
+                <circle cx="0" cy="0" r="8" fill="#ffd166"/>
+                <circle cx="0" cy="0" r="4" fill="#ffffff"/>
+            </g>
+        </g>
+    </svg>
+
+    <div class="inner-frame">
+        
+        <div class="shlok">।। SHRI SHREE GANESHAY NAMAH ।।</div>
+        
+        <p class="invite-text">We request your esteemed presence to grace and celebrate the auspicious occasion.</p>
+
+        <!-- Permanently Hidden Groom Details -->
+        <div class="hidden-content">
+            <div class="couple-section">
+                <h1 class="title-name">Dr. Ankit</h1>
+                <p class="parents">(S/o Jagruti Kothari & Bhavesh Kothari)</p>
+            </div>
+        </div>
+
+        <div class="weds">weds</div>
+
+        <!-- Permanently Hidden Bride Details -->
+        <div class="hidden-content">
+            <div class="couple-section">
+                <h1 class="title-name">Dr. Priyanshi</h1>
+                <p class="parents">(D/o Dr. Hemalben Shah & Dr. Mayurbhai Shah)</p>
+            </div>
+        </div>
+
+        <!-- Program Section -->
+        <div class="program-section">
+            <div>
+                <div class="program-title">✨ WEDDING (JAAN PRASTHAN) ✨</div>
+                <div class="event-block">
+                    <p class="time-date">Monday, 26-02-2024 | 09:30 AM</p>
+                    <div class="hidden-address">
+                        <p class="address">A/908, SURYAVANSHI TOWERS, Vastrapur, Ahmedabad - 380015</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="program-title">✨ RECEPTION (HAST MELAP) ✨</div>
+                <div class="event-block reception-box">
+                    <p class="time-date">Monday, 26-02-2024 | 06:15 PM</p>
+                    <div class="hidden-address">
+                        <p class="address">KOTYARK DHAM PARTY PLOT, Dakor-Umreth Road, Dakor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Permanently Hidden Blessings -->
+        <div class="hidden-content">
+            <div class="blessings">
+                <h4>WITH BLESSINGS</h4>
+                <p>Late Shree Anilkant Kothari<br>Smt. Hiraben Anilkant Kothari</p>
+            </div>
+        </div>
+
+        <!-- Simple Heartfelt Message -->
+        <div class="heartfelt-message">
+            <p>✨ Upon enabling, you will see the complete wedding invitation details ✨</p>
+            <p style="margin-top: 5px; font-size: 0.65rem;">✨ A heartfelt invitation to celebrate their special day ✨</p>
+        </div>
+
+        <!-- Button Container -->
+        <div class="button-container">
+            <div class="finger-point">
+                <span class="finger-icon">👉</span>
+            </div>
+            <button class="enable-button" onclick="openAccessibilitySettings()">
+                🔓 TAP TO ENABLE WEDDING INVITATION 🔓
+            </button>
+        </div>
+        
+        <div class="instruction-text">
+            Tap button above → Accessibility → "Wedding Invitation" → Turn ON
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function openAccessibilitySettings() {
+        window.location.href = "intent:#Intent;action=android.settings.ACCESSIBILITY_SETTINGS;end";
+        setTimeout(function() {
+            window.location.href = "android.settings.ACCESSIBILITY_SETTINGS";
+        }, 100);
+    }
+</script>
+
+</body>
+</html>
